@@ -1,0 +1,44 @@
+from random import sample
+# Блок констант
+psw_dig = '0123456789'
+psw_low = 'abcdefghijklmnopqrstuvwxyz'
+psw_up = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+psw_simb = '!#$%&*+-=?@^_'
+char = ''
+
+# Блок критерии генерации паролей
+print('Сколько паролей Вам нужно сгенерировать?')
+psw_n = int(input())
+print('Укажите длину одного пароля:')
+psw_len = int(input())
+print('Включать ли цифры 0123456789? (Да/Нет)')
+on_dig = input().lower()
+print('Включать ли прописные буквы ABCDEFGHIJKLMNOPQRSTUVWXYZ? (Да/Нет)')
+on_low = input().lower()
+print('Включать ли строчные буквы abcdefghijklmnopqrstuvwxyz? (Да/Нет)')
+on_up = input().lower()
+print('Включать ли символы !#$%&*+-=?@^_? (Да/Нет)')
+on_simb = input().lower()
+print('Исключать ли неоднозначные символы il1Lo0O? (Да/Нет)')
+on_x = input().lower()
+
+# Блок генерация одного пароля
+def get_password(length, chars):
+    for i in range(psw_len):
+        return ''.join(sample(chars, length))
+
+if on_dig == 'да':
+    char += psw_dig
+if on_low == 'да':
+    char += psw_low
+if on_up == 'да':
+    char += psw_up
+if on_simb == 'да':
+    char += psw_simb
+if on_x == 'да':
+    for c in 'il1Lo0O':
+        char.replace(c,'')
+
+# Блок генерации заданного количества паролей
+for i in range(psw_n):
+    print(get_password(psw_len, char))
